@@ -1,10 +1,11 @@
-# import cmd
-# from rich.console import Console
-# from rich.layout import Layout
-# from rich.panel import Panel
-# from typing import Dict, Optional
+import cmd
+from rich.console import Console
+from rich.layout import Layout
+from rich.panel import Panel
+from typing import Dict, Optional
 # from .llm import process_with_llm
-# from .commands import CommandExecutor
+from .local_parser import CommandParser
+from .commands import CommandExecutor
 
 # class TerrAI(cmd.Cmd):
 #     intro = 'Welcome to TerrAI - Your AI-powered terminal assistant. Type "help" or "?" for commands.\n'
@@ -43,14 +44,6 @@
 #         """Exit TerrAI"""
 #         print("Goodbye!")
 #         return True
-    
-import cmd
-from rich.console import Console
-from rich.layout import Layout
-from rich.panel import Panel
-from typing import Dict, Optional
-from .local_parser import CommandParser
-from .commands import CommandExecutor
 
 class TerrAI(cmd.Cmd):
     intro = 'Welcome to TerrAI - Your intelligent terminal assistant. Type "help" or "?" for commands.\n'
