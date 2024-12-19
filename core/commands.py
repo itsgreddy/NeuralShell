@@ -53,6 +53,7 @@ from rich.table import Table
 import os
 import shutil
 import humanize
+import socket
 from datetime import datetime
 from .system_utils import SystemUtils
 
@@ -154,22 +155,44 @@ class CommandExecutor:
                     value = f"{value}%"
                 table.add_row(key.replace('_', ' ').title(), str(value))
             self.console.print(table)
-
-    def handle_directory_operation(self, command: Dict):
-        """Handle directory-related operations"""
-        operation = command.get('operation')
-        
-        if operation == 'pwd':
-            try:
-                current_dir = os.getcwd()
-                self.console.print(f"[blue]Current directory: {current_dir}[/blue]")
-            except Exception as e:
-                self.console.print(f"[red]Error getting current directory: {str(e)}[/red]")
-                
-        elif operation == 'cd':
-            path = command.get('path')
-            try:
-                os.chdir(path)
-                self.console.print(f"[green]Changed directory to: {path}[/green]")
-            except Exception as e:
-                self.console.print(f"[red]Error changing directory: {str(e)}[/red]")
+            
+        elif operation == 'network':
+            info = self.system_utils.get_network_info()
+            table = Table(title="Network Information")
+            table.add_column("Property", style="cyan")
+            table.add_column("Value", style="magenta")
+            
+            # Handle basic network info
+            table.add_row("Hostname", info['hostname'])
+            table.add_row("IP Address", info['ip_address'])
+            
+            # Handle network interfaces
+            for interface, addrs in info['interfaces'].items():
+                for addr in addrs:
+                    if addr.family == socket.AF_INET:  # IPv4
+                        table.add_row(f"Interface {interface}", f"IPv4: {addr.address}")
+                    elif addr.family == socket.AF_INET6:  # IPv6
+                        table.add_row(f"Interface {interface}", f"IPv6: {addr.address}")
+            
+            self.console.print(table)
+            
+        elif operation == 'processes':
+            processes = self.system_utils.get_process_info()
+            table = Table(title="Running Processes")
+            table.add_column("PID", style="cyan")
+            table.add_column("Name", style="magenta")
+            table.add_column("CPU %", style="green")
+            table.add_column("Memory %", style="yellow")
+            
+            # Sort processes by CPU usage and show top 10
+            sorted_processes = sorted(processes, key=lambda x: x.get('cpu_percent', 0), reverse=True)[:10]
+            
+            for proc in sorted_processes:
+                table.add_row(
+                    str(proc.get('pid', 'N/A')),
+                    str(proc.get('name', 'N/A')),
+                    f"{proc.get('cpu_percent', 0):.1f}%",
+                    f"{proc.get('memory_percent', 0):.1f}%"
+                )
+            
+            self.console.print(table)

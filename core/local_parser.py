@@ -18,10 +18,10 @@ class CommandParser:
                 return {'type': 'system_operation', 'operation': 'memory'}
             elif any(x in command for x in ['disk', 'storage', 'space']):
                 return {'type': 'system_operation', 'operation': 'disk'}
-            elif any(x in command for x in ['network', 'internet', 'connection']):
+            elif any(x in command for x in ['network', 'internet', 'connection', 'network info']):
                 return {'type': 'system_operation', 'operation': 'network'}
-            elif any(x in command for x in ['process', 'running', 'tasks']):
-                return {'type': 'system_operation', 'operation': 'process'}
+            elif any(x in command for x in ['process', 'running', 'tasks', 'processes']):
+                return {'type': 'system_operation', 'operation': 'processes'}
         
         # File operations with flexible matching
         # Move operation
