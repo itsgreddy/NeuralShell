@@ -101,6 +101,41 @@ class CommandExecutor:
             except Exception as e:
                 self.console.print(f"[red]Error deleting file: {str(e)}[/red]")
 
+    def handle_directory_operation(self, command: Dict):
+        """Handle directory-related operations"""
+        operation = command.get('operation')
+        
+        if operation == 'pwd':
+            try:
+                current_dir = os.getcwd()
+                self.console.print(f"[blue]Current directory: {current_dir}[/blue]")
+            except Exception as e:
+                self.console.print(f"[red]Error getting current directory: {str(e)}[/red]")
+                
+        elif operation == 'cd':
+            path = command.get('path')
+            try:
+                os.chdir(path)
+                self.console.print(f"[green]Changed directory to: {path}[/green]")
+            except Exception as e:
+                self.console.print(f"[red]Error changing directory: {str(e)}[/red]")
+                
+        elif operation == 'mkdir':
+            path = command.get('path')
+            try:
+                os.makedirs(path, exist_ok=True)
+                self.console.print(f"[green]Created directory: {path}[/green]")
+            except Exception as e:
+                self.console.print(f"[red]Error creating directory: {str(e)}[/red]")
+                
+        elif operation == 'rmdir':
+            path = command.get('path')
+            try:
+                os.rmdir(path)
+                self.console.print(f"[green]Removed directory: {path}[/green]")
+            except Exception as e:
+                self.console.print(f"[red]Error removing directory: {str(e)}[/red]")
+
     def handle_system_operation(self, command: Dict):
         """Handle system-related operations"""
         operation = command.get('operation')
