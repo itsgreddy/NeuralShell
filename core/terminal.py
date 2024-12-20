@@ -9,6 +9,8 @@ from .llm import process_with_llm
 from .local_parser import CommandParser
 from .commands import CommandExecutor
 
+# ------------------------- AI MODE FOR OPENAI API KEY ------------------------
+
 # class TerrAI(cmd.Cmd):
 #     intro = 'Welcome to TerrAI - Your AI-powered terminal assistant. Type "help" or "?" for commands.\n'
 #     prompt = '\033[92m❯\033[0m '
@@ -46,6 +48,10 @@ from .commands import CommandExecutor
 #         """Exit TerrAI"""
 #         print("Goodbye!")
 #         return True
+
+# ------------------------- AI MODE FOR OPENAI API KEY ------------------------
+
+# --------------------- STANDARD MODE WITHOUT ANY API KEY ---------------------
 
 class TerrAI(cmd.Cmd):
     intro = '''
@@ -269,3 +275,5 @@ class TerrAI(cmd.Cmd):
     def do_EOF(self, arg):
         """Handle EOF (Ctrl+D/Ctrl+Z)"""
         return self.do_exit(arg)
+    
+# --------------------- STANDARD MODE WITHOUT ANY API KEY ---------------------

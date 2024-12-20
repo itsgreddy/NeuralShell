@@ -8,6 +8,8 @@ import socket
 from datetime import datetime
 from .system_utils import SystemUtils
 
+# ------------------------- AI MODE FOR OPENAI API KEY ------------------------
+
 # class CommandExecutor:
 #     def __init__(self):
 #         self.console = Console()
@@ -43,6 +45,10 @@ from .system_utils import SystemUtils
 #             files = os.listdir('.')
 #             for file in files:
 #                 self.console.print(file)
+
+# ------------------------- AI MODE FOR OPENAI API KEY ------------------------
+
+# --------------------- STANDARD MODE WITHOUT ANY API KEY ---------------------
 
 class CommandExecutor:
     def __init__(self):
@@ -218,3 +224,5 @@ class CommandExecutor:
                 )
             
             self.console.print(table)
+
+# --------------------- STANDARD MODE WITHOUT ANY API KEY ---------------------
