@@ -1,4 +1,4 @@
-# System CLI Tool
+# TerrAI CLI Tool (Terminal AI)
 
 A modern command-line interface tool that provides system monitoring capabilities and file operations with optional natural language processing support. This tool can be used either with AI-powered natural language processing (using OpenAI's API) or as a standard CLI tool with direct commands.
 
