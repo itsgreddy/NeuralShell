@@ -79,13 +79,13 @@ When you run system information commands, you'll get nicely formatted tables lik
 
 ```
 ┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Property  ┃ Value                  ┃
-┡━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━┩
-│ OS        │ Windows                │
-│ Version   │ 10.0.19045            │
-│ Machine   │ AMD64                  │
-│ Processor │ Intel64 Family 6       │
-└───────────┴────────────────────────┘
+┃ Property  ┃ Value                 ┃
+┡━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━┃
+│ OS        │ Windows               ┃
+│ Version   │ 10.0.19045            ┃
+│ Machine   │ AMD64                 ┃
+│ Processor │ Intel64 Family 6      ┃
+└───────────┴───────────────────────┘
 ```
 
 ## Requirements
