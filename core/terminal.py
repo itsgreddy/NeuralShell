@@ -54,11 +54,6 @@ from .commands import CommandExecutor
 # --------------------- STANDARD MODE WITHOUT ANY API KEY ---------------------
 
 class TerrAI(cmd.Cmd):
-    intro = '''
-[blue]Welcome to TerrAI - Your intelligent terminal assistant[/blue]
-[green]Type "help" or "?" to list commands.[/green]
-'''
-    prompt = '\033[92m❯\033[0m '
 
     def __init__(self):
         super().__init__()
@@ -66,6 +61,20 @@ class TerrAI(cmd.Cmd):
         self.layout = Layout()
         self.command_executor = CommandExecutor()
         self.parser = CommandParser()
+        
+        # Create colored intro text using Rich
+        intro_text = (
+            "[blue]Welcome to TerrAI - Your intelligent terminal assistant[/blue]\n"
+            "[green]Type 'help' or '?' to list commands.[/green]"
+        )
+        self.console.print(intro_text)
+        
+        # Set empty intro to prevent double printing
+        self.intro = ''
+        
+        # Set colored prompt
+        self.prompt = '\033[92m❯\033[0m '
+        
         self.setup_ui()
         
     def setup_ui(self):
