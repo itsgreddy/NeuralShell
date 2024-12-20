@@ -96,12 +96,24 @@ When you run system information commands, you'll get nicely formatted tables lik
 ## Project Structure
 
 ```
-system-cli-tool/
-├── command_parser.py    # Natural language command parsing
-├── command_executor.py  # Command execution logic
-├── system_utils.py      # System utility functions
+NEURALSHELL/
+├── core/                   # Core functionality
+│   ├── __pycache__/
+│   ├── __init__.py        # Package initializer
+│   ├── commands.py        # Command definitions
+│   ├── llm.py            # Language model integration
+│   ├── local_parser.py   # Command parsing logic
+│   ├── system_utils.py   # System utility functions
+│   └── terminal.py       # Terminal interface
+├── terr/                  # Additional directory
+├── .env                   # Environment variables
+├── .gitignore            # Git ignore rules
+├── called                # Project files
+├── LICENSE               # License file
+├── main.py              # Main entry point
+├── README.md            # Project documentation
 ├── requirements.txt     # Project dependencies
-└── README.md
+└── text.red            # Additional configuration
 ```
 
 ## Contributing
@@ -124,6 +136,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Your Name - [@yourusername](https://twitter.com/yourusername)
+Your Name - [@g.hvr](https://www.instagram.com/g.hvr/)
 
 Project Link: [https://github.com/itsgreddy/NeuralShell.git](https://github.com/itsgreddy/NeuralShell.git)
